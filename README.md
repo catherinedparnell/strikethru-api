@@ -52,6 +52,6 @@ strikethru api for HackDartmouth 2021
 
     **POST** — Processes previously uploaded file 
     
-   *req.body:* `{ filename, countFlag: 'yes' for counts, 'no' otherwise }`
+   *req.body:* `{ filename, countFlag: 'yes' for counts | 'no' otherwise }`
 
    Returns: `filename`
