@@ -13,8 +13,6 @@ const db = admin.firestore();
 export async function addUser(username, name) {
   const user = {
     name,
-    filterType: '',
-    processType: '',
   };
   await db.collection('users').doc(username).set(user);
   const userRef = db.collection('users').doc(username);
