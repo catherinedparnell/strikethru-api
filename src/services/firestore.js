@@ -41,7 +41,18 @@ export async function updatePreferences(username, preferences) {
   }
 }
 
-// Delete user
+// gets user + info
+export async function getUser(username) {
+  const usersRef = db.collection('users').doc(username);
+  const doc = await usersRef.get();
+  if (!doc.exists) {
+    return { error: 'Failure to get user' };
+  } else {
+    return { result: doc.data() };
+  }
+}
+
+// deletes user
 export async function deleteUser(username) {
   await db.collection('users').doc(username).delete();
   return { message: 'User successfully deleted.' };

@@ -21,6 +21,15 @@ export const updatePreferences = (req, res) => {
     });
 };
 
+// get user + preferences
+export const getUser = (req, res) => {
+  fs.getUser(req.params.username)
+    .then((result) => { res.send(result); })
+    .catch((error) => {
+      res.send({ error });
+    });
+};
+
 // deletes user from firestore
 export const deleteUser = (req, res) => {
   fs.deleteUser(req.params.username)

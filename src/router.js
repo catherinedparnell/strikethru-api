@@ -5,6 +5,7 @@ const router = Router();
 
 router.route('/user/:username')
   .post(userController.addUser)
+  .get(userController.getUser)
   .put(userController.updatePreferences)
   .delete(userController.deleteUser);
 
