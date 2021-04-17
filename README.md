@@ -6,7 +6,7 @@ strikethru api for HackDartmouth 2021
   
   **POST** - Adds user 
   
-  req.body: `{ name: the name of user }`
+  *req.body:* `{ name: the name of user }`
   
   Returns: `{ "result": { "chosenFilter": "none", "name": string } }`
   
@@ -14,27 +14,27 @@ strikethru api for HackDartmouth 2021
   
   Returns: ` { "result": { "name": "cath", "chosenFilter": string of chosen words separated by commas or none, "filterTypes": string of codes separated by commas, "processType": 'word' | 'sentence' } }`
   
-  **PUT** — Updates user processing information
+    **PUT** — Updates user processing information
   
-  req.body: ` { processType: 'word'|'sentence', filterTypes: string of codes separated by commas, chosenFilter: string of chosen words separated by commas or none }`
+  *req.body:* ` { processType: 'word'|'sentence', filterTypes: string of codes separated by commas, chosenFilter: string of chosen words separated by commas or none }`
   
   Returns: ` { "result": { "name": "cath", "chosenFilter": string of chosen words separated by commas or none, "filterTypes": string of codes separated by commas, "processType": 'word' | 'sentence' } }`
   
-  **DELETE** — Deletes user
+    **DELETE** — Deletes user
   
     
  * `/upload`
   
-  **POST** — Uploads txt file for processing 
+    **POST** — Uploads txt file for processing 
     
-   req.body: `{ file }`
+   *req.body:* `{ file }`
     
    Returns: `filename`
     
  * `/text/:username`
 
-  **POST** — Processes previously uploaded file 
+    **POST** — Processes previously uploaded file 
     
-   req.body: `{ filename, countFlag: 'yes' for counts, 'no' otherwise }`
+   *req.body:* `{ filename, countFlag: 'yes' for counts, 'no' otherwise }`
 
    Returns: `filename`
