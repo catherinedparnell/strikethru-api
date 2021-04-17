@@ -4,7 +4,9 @@ strikethru api for HackDartmouth 2021
 ## Documentation
 * `/user/:username`
   
-  **POST** - Adds user `req.body = { name: the name of user }`
+  **POST** - Adds user 
+  
+  `req.body = { name: the name of user }`
   
   Returns: `{
  `    "result": {
@@ -25,6 +27,8 @@ strikethru api for HackDartmouth 2021
 }`
   
   **PUT** — Updates user processing information
+  
+  
   ` req.body = { 
       processType: 'word'|'sentence', 
       filterTypes: string of codes separated by commas, 
@@ -45,12 +49,16 @@ strikethru api for HackDartmouth 2021
     
  * `/upload`
   
-    **POST** — Uploads txt file for processing `req.body = { file }`
+    **POST** — Uploads txt file for processing 
+    
+    `req.body = { file }`
     
     Returns: `filename`
     
  * `/text/:username`
 
-    **POST** — Processes previously uploaded file `req.body = { filename, countFlag: 'yes' for counts, 'no' otherwise }`
+    **POST** — Processes previously uploaded file 
+    
+    `req.body = { filename, countFlag: 'yes' for counts, 'no' otherwise }`
 
     Returns: `filename`
