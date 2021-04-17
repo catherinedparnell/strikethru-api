@@ -31,18 +31,21 @@ export const uploadFile = (req, res) => {
 };
 
 // process text by file
-// req.body = { filename }
+// req.body = { filename, countFlag: 'yes' for counts, 'no' otherwise }
 export const processText = (req, res) => {
-  const { filename } = req.body;
+  const { filename, countFlag } = req.body;
   fs.getUser(req.params.username)
     .then((result) => {
-      const { filterTypes, processType } = result.result;
+      // filterTypes and chosenFilter are strings separated by commas
+      const { filterTypes, processType, chosenFilter } = result.result;
       let dataToSend;
-      const python = spawn('python', ['../scripts/textProcessing.py', filterTypes, processType, filename], { cwd: __dirname });
+      // spawn python script for text analysis
+      const python = spawn('python', ['../scripts/textProcessing.py', filterTypes, processType, filename, chosenFilter, countFlag], { cwd: __dirname });
       python.stdout.on('data', (data) => {
         console.log('Pipe data from python script ...');
         dataToSend = data.toString();
       });
+      // resolve and close child process
       python.on('close', (code) => {
         console.log(`child process close all stdio with code ${code}`);
         res.download(path.resolve(`public/${dataToSend.replace(/\n/g, '')}`));

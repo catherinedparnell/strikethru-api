@@ -13,6 +13,7 @@ const db = admin.firestore();
 export async function addUser(username, name) {
   const user = {
     name,
+    chosenFilter: 'none',
   };
   await db.collection('users').doc(username).set(user);
   const userRef = db.collection('users').doc(username);
@@ -30,6 +31,7 @@ export async function updatePreferences(username, preferences) {
   await userRef.update({
     filterTypes: preferences.filterTypes,
     processType: preferences.processType,
+    chosenFilter: preferences.chosenFilter,
   });
   const doc = await userRef.get();
   if (!doc.exists) {
