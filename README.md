@@ -1,2 +1,2 @@
 # strikethru-api
-strikethru api for HackDartmouth Hackathon
+strikethru api for HackDartmouth
