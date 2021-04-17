@@ -11,7 +11,9 @@ router.route('/user/:username')
   .delete(userController.deleteUser);
 
 router.route('/text/:username')
-  .get(textController.processText)
+  .post(textController.processText);
+
+router.route('/upload')
   .post(textController.uploadFile);
 
 export default router;
