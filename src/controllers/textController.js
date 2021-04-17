@@ -1,6 +1,3 @@
-/* eslint-disable no-case-declarations */
-/* eslint-disable import/prefer-default-export */
-
 import multer from 'multer';
 import * as fs from '../services/firestore';
 
