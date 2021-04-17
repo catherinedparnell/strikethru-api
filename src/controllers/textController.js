@@ -16,7 +16,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }).single('file');
 
 // upload file
-// req.body = { file }
 export const uploadFile = (req, res) => {
   upload(req, res, (err) => {
     if (err instanceof multer.MulterError) {
@@ -31,7 +30,6 @@ export const uploadFile = (req, res) => {
 };
 
 // process text by file
-// req.body = { filename, countFlag: 'yes' for counts, 'no' otherwise }
 export const processText = (req, res) => {
   const { filename, countFlag } = req.body;
   fs.getUser(req.params.username)
