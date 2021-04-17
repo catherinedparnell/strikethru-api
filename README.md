@@ -2,6 +2,23 @@
 strikethru api for HackDartmouth 2021
 
 ## Documentation
+### File Structure
+```
+├── public                          # storage for uploaded and processed files
+├── src
+│   ├── constants                   # codes and references for hate speech
+│   └── controllers                 # all controllers
+│       ├── text_controllers        # controller for text processing
+│       └── user_controllers        # controller for user information
+│   ├── scripts                     # python scripts for text analysis
+│   ├── services                    # access to firestore database
+│   ├── routers                     # all routers
+│   └── server.js                   # server
+├── README.md
+├── package.json
+└── yarn.lock
+```
+### Endpoints
 * `/user/:username`
   
   **POST** - Adds user 
