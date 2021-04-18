@@ -25,7 +25,7 @@ strikethru api for HackDartmouth 2021
   
   *req.body:* `{ name: the name of user }`
   
-  Returns: `{ "result": { "chosenFilter": "none", "name": string } }`
+  Returns: `{ "result": { "chosenFilter": "none", "name": string, "processType": "word", "filterTypes": "h,r,t,s,a" } }`
   
   **GET** - Gets user and all corresponding preferences & information
   
