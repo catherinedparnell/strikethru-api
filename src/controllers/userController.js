@@ -2,8 +2,18 @@ import * as fs from '../services/firestore';
 
 // adds user to firestore
 export const addUser = (req, res) => {
-  fs.addUser(req.params.username, req.body.name)
-    .then((result) => { res.send(result); })
+  fs.getUser(req.params.username)
+    .then((result) => {
+      if (result.error !== undefined) {
+        fs.addUser(req.params.username, req.body.name)
+          .then((r) => { res.send(r); })
+          .catch((error) => {
+            res.send({ error });
+          });
+      } else {
+        res.send(result);
+      }
+    })
     .catch((error) => {
       res.send({ error });
     });
