@@ -30,11 +30,11 @@ export const uploadFile = (req, res) => {
 
 // process text by file
 export const processText = (req, res) => {
-  const { filename, countFlag } = req.body;
+  const { filename, countFlag, processType } = req.body;
   fs.getUser(req.params.username)
     .then((result) => {
       // filterTypes and chosenFilter are strings separated by commas
-      const { filterTypes, processType, chosenFilter } = result.result;
+      const { filterTypes, chosenFilter } = result.result;
       let dataToSend;
       // spawn python script for text analysis
       const python = spawn('python', ['../scripts/textProcessing.py', filterTypes, processType, filename, chosenFilter, countFlag], { cwd: __dirname });
