@@ -1,5 +1,10 @@
 # strikethru-api
-strikethru api for HackDartmouth 2021
+
+It's no secret that the internet is far from a safe space. There's harmful language - whether it be used "jokingly" or maliciously - that can be triggering for individuals of all identities. And, unfortunately, many websites and social media platforms do not give users the ability to censor content for themselves. This is where strikethru comes in.
+
+**strikethru** is a Chrome extension that uses HTML scraping to find harmful words on a website and hides them from the user. Think of it like a content warning maker for the internet! The user can pick from different categories of potential trigger words and even add their own.
+
+Our website also has a file upload tool that can filter an uploaded .txt file and output the same document with trigger words edited with asterisks. They can also choose to hide entire sentences that qualify sentiments in text, hiding entire sentences that are recognized as hate speech.
 
 ## Documentation
 ### File Structure
@@ -52,7 +57,7 @@ strikethru api for HackDartmouth 2021
 
     **POST** — Processes previously uploaded file 
     
-   *req.body:* `{ filename, countFlag: 'yes' for counts | 'no' otherwise }`
+   *req.body:* `{ filename, countFlag: 'yes' for counts | 'no' otherwise, processType: 'word' or 'sentence' }`
 
    Returns: `filename`
   
