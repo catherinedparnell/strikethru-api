@@ -62,7 +62,7 @@ print('processed-'+fileName)
 
 # add counts to bottom of writeFile if count flag present
 if countFlag == 'yes' and processType == 'word':
-    print('\nCode Type:       Totals:', file=writeFile)
+    print('\nCode Type:       Totals:')
     for f in counts:
         print(slurCodes[f]+"        "+str(counts[f]))
 
