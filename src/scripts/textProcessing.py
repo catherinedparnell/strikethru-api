@@ -48,14 +48,14 @@ if processType == 'word':
                     if countFlag == 'yes':
                         counts[f] += 1
         line = ' '.join(line)
-        print(line, file=writeFile)
+        print(line)
 if processType == 'sentence':
     for line in file:
         split = line.translate(str.maketrans('', '', string.punctuation)).strip()
         prediction = sonar.ping(text=split)
         if prediction['top_class'] == 'hate_speech':
             line = "This line is predicted to be hate speech by our classifier."
-        print(line.strip(), file=writeFile)
+        print(line.strip())
 
 # return for access to processed writeFile
 print('processed-'+fileName)
@@ -64,5 +64,5 @@ print('processed-'+fileName)
 if countFlag == 'yes' and processType == 'word':
     print('\nCode Type:       Totals:', file=writeFile)
     for f in counts:
-        print(slurCodes[f]+"        "+str(counts[f]), file=writeFile)
+        print(slurCodes[f]+"        "+str(counts[f]))
 

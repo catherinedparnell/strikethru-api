@@ -2,7 +2,6 @@ import multer from 'multer';
 import * as fs from '../services/firestore';
 
 const { spawn } = require('child_process');
-const path = require('path');
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -46,7 +45,7 @@ export const processText = (req, res) => {
       // resolve and close child process
       python.on('close', (code) => {
         console.log(`child process close all stdio with code ${code}`);
-        res.download(path.resolve(`public/${dataToSend.replace(/\n/g, '')}`));
+        res.send(dataToSend);
       });
     })
     .catch((error) => {

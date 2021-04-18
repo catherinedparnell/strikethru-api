@@ -14,6 +14,8 @@ export async function addUser(username, name) {
   const user = {
     name,
     chosenFilter: 'none',
+    filterTypes: 'h,r,t,s,a',
+    processType: 'word',
   };
   await db.collection('users').doc(username).set(user);
   const userRef = db.collection('users').doc(username);
