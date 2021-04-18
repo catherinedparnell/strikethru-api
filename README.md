@@ -1,4 +1,6 @@
-# strikethru-api
+<img width="647" alt="Screen Shot 2021-04-18 at 12 10 45 PM" src="https://user-images.githubusercontent.com/56173614/115152464-32c3ab00-a03f-11eb-8716-8a54216a833f.png">
+
+# API Reference 
 
 It's no secret that the internet is far from a safe space. There's harmful language - whether it be used "jokingly" or maliciously - that can be triggering for individuals of all identities. And, unfortunately, many websites and social media platforms do not give users the ability to censor content for themselves. This is where strikethru comes in.
 
