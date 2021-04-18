@@ -1,6 +1,10 @@
 import sys
 import json
 import string
+from hatesonar import Sonar
+
+# hate speech classifier from hatesonar python library
+sonar = Sonar()
 
 # grab proper arguments
 filterTypes = sys.argv[1]
@@ -24,35 +28,40 @@ if chosenFilter != "none":
     filterTypes.append("c")
 
 # load codes for counts if count flag present
-if countFlag == 'yes':
+if countFlag == 'yes' and processType == 'word':
     counts = {key: 0 for key in filterTypes}
     with open('../constants/codes.json') as f:
         slurCodes = json.load(f)
 
 # process file by type and write to new processed file
-for line in file:
-    split = line.translate(str.maketrans('', '', string.punctuation)).strip().split(" ")
-    line = line.strip().split(" ")
-    for i in range(len(split)):
-        word = split[i].lower()
-        for f in filterTypes:
-            subSlurs = slurs[f]
-            if word in subSlurs:
-                if processType == 'sentence':
-                    line = ['This', 'line', 'has', 'been', 'omitted.']
-                if processType == 'word':
+if processType == 'word':
+    for line in file:
+        split = line.translate(str.maketrans('', '', string.punctuation)).strip().split(" ")
+        line = line.strip().split(" ")
+        for i in range(len(split)):
+            word = split[i].lower()
+            for f in filterTypes:
+                subSlurs = slurs[f]
+                if word in subSlurs:
                     omitted = word[0] + "*" * (len(line[i])-2) + word[len(word)-1]
                     line[i] = omitted
-                if countFlag == 'yes':
-                    counts[f] += 1
-    line = ' '.join(line)
-    print(line, file=writeFile)
+                    if countFlag == 'yes':
+                        counts[f] += 1
+        line = ' '.join(line)
+        print(line, file=writeFile)
+if processType == 'sentence':
+    for line in file:
+        split = line.translate(str.maketrans('', '', string.punctuation)).strip()
+        prediction = sonar.ping(text=split)
+        if prediction['top_class'] == 'hate_speech':
+            line = "This line is predicted to be hate speech by our classifier."
+        print(line.strip(), file=writeFile)
 
 # return for access to processed writeFile
 print('processed-'+fileName)
 
 # add counts to bottom of writeFile if count flag present
-if countFlag == 'yes':
+if countFlag == 'yes' and processType == 'word':
     print('\nCode Type:       Totals:', file=writeFile)
     for f in counts:
         print(slurCodes[f]+"        "+str(counts[f]), file=writeFile)
